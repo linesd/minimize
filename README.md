@@ -24,6 +24,8 @@ The minimum of the function occurs at X = [1., 1.] with a function value of 0 an
 
 The check_grad function can be used to check that the function values and partial derivatives are consistent. The check_grad function compares the values of the partial derivatives returned by the function with a finite difference approximation. check_grad prints a comparison of the partial derivatives and the finite difference approximation and returns the norm of the difference divided by the norm of the sum of the partial derivatives and finite differences. 
 
+'''d = check_grad(f, X, e, args=())'''
+
 It is used as follows:
 
 >>> np.random.seed(0)
