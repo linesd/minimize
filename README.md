@@ -27,13 +27,19 @@ The check_grad function can be used to check that the function values and partia
 It is used as follows:
 
 >>> np.random.seed(0)
+
 >>> X = np.random.normal(0, 1, size=(3,1))
+
 >>> d = check_grad(rosenbrock, X, 1e-5)
 
 >>> Gradients vs finite difference:
+
 >>> 1914.97696491 1914.97696499
+
 >>> -674.57380768 -674.57380767
+
 >>> 163.72243854  163.72243854
 
 >>> print("d : ", d)
+
 >>> d :  1.9199773511233608e-11
