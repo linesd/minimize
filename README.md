@@ -7,7 +7,7 @@ Notes:
 
 ## minimize Usage
 
-Here the two-dimensional [rosenbrock](https://en.wikipedia.org/wiki/Rosenbrock_function) function is used to show how minimize works. The function returns the function value and the partial derivatives with respect to the variables to be minimized.
+The minimize function is called according to the following definition. An example follows.
 
 ```
 Xs, convergence, i = minimize(f, X, length, args=(), reduction=None, verbose=True)
@@ -50,6 +50,7 @@ convergence : numpy array - Shape : (i, D+1)
 i : int
 	Number of line searches or function evaluations depending on which was selected.
 ```
+Here the two-dimensional [rosenbrock](https://en.wikipedia.org/wiki/Rosenbrock_function) function is used to show how minimize works. The function returns the function value and the partial derivatives with respect to the variables to be minimized.
 
 Starting from initial conditions `X0 = np.array([[-1],[0]])` and `length = 100` "linesearches":
 
