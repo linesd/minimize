@@ -9,14 +9,60 @@ Notes:
 
 Here the two-dimensional [rosenbrock](https://en.wikipedia.org/wiki/Rosenbrock_function) function is used to show how minimize works. The function returns the function value and the partial derivatives with respect to the variables to be minimized.
 
-Starting from initial conditions X0 = np.array([[-1],[0]]) and length = 100 "linesearches":
+```
+Xs, convergence, i = minimize(f, X, length, args=(), reduction=None, verbose=True)
 
+Parameters
+----------
+f : function to minimize. The function must return the value
+	of the function (float) and a numpy array of partial
+	derivatives of shape (D,) with respect to X, where D is
+	the dimensionality of the function.
+
+X : numpy array - Shape : (D, 1)
+	initial guess.
+
+length : int
+	The length of the run. If positive, length gives the maximum
+	number of line searches, if negative its absolute value gives
+	the maximum number of function evaluations.
+
+args : tuple
+	Tuple of parameters to be passed to the function f.
+
+reduction : float
+	The expected reduction in the function value in the first
+	linesearch (if None, defaults to 1.0)
+
+verbose : bool
+	If True - prints the progress of minimize. (default is True)
+
+Return
+------
+Xs : numpy array - Shape : (D, 1)
+	The found solution.
+
+convergence : numpy array - Shape : (i, D+1)
+	Convergence information. The first column is the function values
+	returned by the function being minimized. The next D columns are
+	the guesses of X during the minimization process.
+
+i : int
+	Number of line searches or function evaluations depending on which was selected.
+```
+
+Starting from initial conditions `X0 = np.array([[-1],[0]])` and `length = 100` "linesearches":
+
+```
 >>> X, convergence, i = minimize(rosenbrock, X0, length=100)
 
->>> X  = array([[1.],[1.]])
+>>> X
+array([[1.],
+	   [1.]])
 
->>> i = 33
-
+>>> i 
+33
+```
 The minimum of the function occurs at X = [1., 1.] with a function value of 0 and is determined after 33 iterations. The convergence returned by minimize has the function evaluations in the first column, and the parameters being minimised in the following D columns. The figure below shows the convergence values plotted over the rosenbrock function. If the length parameter is set to a negative value then the algorithm is limited by function evaluations rather than linesearches. 
 ![](img/convergence.png)
 
@@ -54,17 +100,14 @@ It is used as follows:
 
 ```
 >>> np.random.seed(0)
-
 >>> X = np.random.normal(0, 1, size=(3,1))
-
 >>> d = check_grad(rosenbrock, X, 1e-5)
 
->>> Gradients vs finite difference:
->>> 1914.97696491 1914.97696499
->>> -674.57380768 -674.57380767
->>> 163.72243854  163.72243854
+Gradients vs finite difference:
+1914.97696491 1914.97696499
+-674.57380768 -674.57380767
+163.72243854  163.72243854
 
 >>> print("d : ", d)
-
->>> d :  1.9199773511233608e-11
+d :  1.9199773511233608e-11
 ```
