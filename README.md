@@ -24,13 +24,37 @@ The minimum of the function occurs at X = [1., 1.] with a function value of 0 an
 
 The check_grad function can be used to check that the function values and partial derivatives are consistent. The check_grad function compares the values of the partial derivatives returned by the function with a finite difference approximation. check_grad prints a comparison of the partial derivatives and the finite difference approximation and returns the norm of the difference divided by the norm of the sum of the partial derivatives and finite differences. 
 
-'''d = check_grad(f, X, e, args=())'''
+```
+d = check_grad(f, X, e, args=())
+
+Parameters
+----------
+f : function to minimize. The function must return the value
+	of the function (float) and a numpy array of partial
+	derivatives of shape (D,) with respect to X, where D is
+	the dimensionality of the function.
+
+X : numpy array - Shape : (D, 1)
+	argument for function f that the partial derivatives
+	relate to.
+
+e : float
+    size of the perturbation used for the finite differences.
+
+args : tuple
+	Tuple of parameters to be passed to the function f.
+
+Return
+------
+d : the norm of the difference divided by the norm of
+    the sum.
+```
 
 It is used as follows:
 
->>> np.random.seed(0)
+`np.random.seed(0)`
 
->>> X = np.random.normal(0, 1, size=(3,1))
+`X = np.random.normal(0, 1, size=(3,1))`
 
 >>> d = check_grad(rosenbrock, X, 1e-5)
 
