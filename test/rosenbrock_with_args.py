@@ -16,6 +16,9 @@ def rosenbrock_with_args(x, a, b):
 
 	x : parameter of the function
 
+	a : dummy parameter for testing. must be set to 100.
+
+	b : dummy parameter for testing. must be set to 400.
 	returns
 	-------
 

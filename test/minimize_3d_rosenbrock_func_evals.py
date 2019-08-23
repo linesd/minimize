@@ -1,5 +1,5 @@
 from minimize import minimize
-from test.rosenbrock import rosenbrock
+from rosenbrock import rosenbrock
 import numpy as np
 
 length = -1000
