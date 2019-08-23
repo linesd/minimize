@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 # minimize rosenbrock
 length = 100
 X = np.array([-1, 0]).reshape(-1,1)
-x, con, i = minimize(rosenbrock, X, length)
+x, convergence, i = minimize(rosenbrock, X, length)
 
 # Get rosenbrock data
 X = np.arange(-1.1, 1.2, 0.05)
@@ -25,7 +25,7 @@ fig = plt.figure(figsize=(8,6))
 ax = plt.axes(projection='3d')
 
 ax.view_init(elev=45., azim=45)
-ax.plot(con[:,1], con[:,2], con[:,0], '-r*', markersize=12)
+ax.plot(convergence[:,1], convergence[:,2], convergence[:,0], '-r*', markersize=12)
 ax.scatter(1, 1, 0, s=100)
 ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='viridis',
                 edgecolor='none', alpha=0.3, antialiased=False)
