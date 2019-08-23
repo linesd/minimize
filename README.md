@@ -59,7 +59,7 @@ Starting from initial conditions `X0 = np.array([[-1],[0]])` and `length = 100` 
 
 >>> X
 array([[1.],
-    [1.]])
+      [1.]])
 
 >>> i 
 33
