@@ -39,7 +39,7 @@ X : numpy array - Shape : (D, 1)
 	relate to.
 
 e : float
-    size of the perturbation used for the finite differences.
+	size of the perturbation used for the finite differences.
 
 args : tuple
 	Tuple of parameters to be passed to the function f.
@@ -47,25 +47,24 @@ args : tuple
 Return
 ------
 d : the norm of the difference divided by the norm of
-    the sum.
+	the sum.
 ```
 
 It is used as follows:
 
-`np.random.seed(0)`
+```
+>>> np.random.seed(0)
 
-`X = np.random.normal(0, 1, size=(3,1))`
+>>> X = np.random.normal(0, 1, size=(3,1))
 
 >>> d = check_grad(rosenbrock, X, 1e-5)
 
 >>> Gradients vs finite difference:
-
 >>> 1914.97696491 1914.97696499
-
 >>> -674.57380768 -674.57380767
-
 >>> 163.72243854  163.72243854
 
 >>> print("d : ", d)
 
 >>> d :  1.9199773511233608e-11
+```
