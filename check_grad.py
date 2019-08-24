@@ -10,19 +10,19 @@ def check_grad(f, X, e, args=()):
     Parameters
     ----------
     f : function to minimize. The function must return the value
-		of the function (float) and a numpy array of partial
-		derivatives of shape (D,) with respect to X, where D is
-		the dimensionality of the function.
+        of the function (float) and a numpy array of partial
+        derivatives of shape (D,) with respect to X, where D is
+        the dimensionality of the function.
 
     X : numpy array - Shape : (D, 1)
-		argument for function f that the partial derivatives
-		relate to.
+        argument for function f that the partial derivatives
+        relate to.
 
-	e : float
-	    size of the perturbation used for the finite differences.
+    e : float
+        size of the perturbation used for the finite differences.
 
     args : tuple
-		Tuple of parameters to be passed to the function f.
+        Tuple of parameters to be passed to the function f.
 
     Return
     ------
@@ -31,7 +31,6 @@ def check_grad(f, X, e, args=()):
     """
     y, dy = eval('f')(X, *list(args))
     dy = dy.reshape(-1,1)
-
     dh = np.zeros_like(X)
 
     for i in range(X.shape[0]):
