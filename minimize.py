@@ -148,6 +148,7 @@ def minimize(f, X, length, args=(), reduction=None, verbose=True):
 			x3 = max(min(x3, x4-INT*(x4-x2)), x2+INT*(x4-x2))     # don't accept too close
 			f3, df3 = eval('f')(X + x3 * s, *list(args))
 			df3 = df3.reshape(-1,1)
+			
 			if f3 < F0:
 				X0 = X+x3*s; F0 = f3; dF0 = df3				      # keep best values
 
