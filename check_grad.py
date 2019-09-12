@@ -29,6 +29,7 @@ def check_grad(f, X, e, args=()):
     d : the norm of the difference divided by the norm of
         the sum.
     """
+	
     y, dy = eval('f')(X, *list(args))
     dy = dy.reshape(-1,1)
     dh = np.zeros_like(X)
