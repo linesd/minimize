@@ -2,7 +2,7 @@ import numpy as np
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning) # suppress np.sqrt Runtime warnings
 
-def minimize(f, X, length, args=(), reduction=None, verbose=True):
+def minimize(f, X, length, args=(), reduction=None, verbose=True, concise=False):
 	"""
 	Minimize a differentiable multivariate function.
 
@@ -31,6 +31,11 @@ def minimize(f, X, length, args=(), reduction=None, verbose=True):
 	verbose : bool
 		If True - prints the progress of minimize. (default is True)
 
+	concise : bool
+		If True - returns concise convergence info, only the minimium function
+		value (necessary when optimizing a large number of parameters)
+		(default is False)
+
 	Return
 	------
 	Xs : numpy array - Shape : (D, 1)
@@ -41,6 +46,10 @@ def minimize(f, X, length, args=(), reduction=None, verbose=True):
 		returned by the function being minimized. The next D columns are
 		the guesses of X during the minimization process.
 
+		If concise = True, convergence information is only the minimum
+		function value. This is necessary only when optimizing a large number
+		of parameters.
+
 	i : int
 		Number of line searches or function evaluations depending on which
 		was selected.
@@ -50,7 +59,7 @@ def minimize(f, X, length, args=(), reduction=None, verbose=True):
  	numerical problems, we cannot get any closer)
 
  	Copyright (C) 2001 - 2006 by Carl Edward Rasmussen (2006-09-08).
- 	Coverted to python by David Lines (2019-23-08)
+ 	Converted to python by David Lines (2019-23-08)
 	"""
 	INT = 0.1 		# don't reevaluate within 0.1 of the limit of the current bracket
 	EXT = 3.0		# extrapolate maximum 3 times the current step size
@@ -174,7 +183,11 @@ def minimize(f, X, length, args=(), reduction=None, verbose=True):
 			x3 = 1/(1-d0)
 			ls_failed = True                                     # this line search failed
 
-	convergence =  np.hstack((np.array(fX).reshape(-1,1), np.array(Xd)[:,:,0])) # bundle convergence info
+	if concise:
+		convergence = fX[-1] # return only the minimum function value
+	else:
+		convergence =  np.hstack((np.array(fX).reshape(-1,1), np.array(Xd)[:,:,0])) # bundle convergence info
+
 	Xs = X # solution
 
 	return Xs, convergence, i
