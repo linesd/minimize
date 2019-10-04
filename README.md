@@ -5,9 +5,10 @@ This repository is a Python implementation of C.E. Rasmussen's [minimize](http:/
 Notes:
 - Tested for python >= 3.6
 
-## minimize Usage
+## minimize usage
 
-The minimize function is called according to the following definition. An example follows.
+The minimize function can be found at `optimizer/minimize.py` and is called according to the following definition. 
+An example of its usage follows follows.
 
 ```
 Xs, convergence, i = minimize(f, X, length, args=(), reduction=None, verbose=True)
@@ -37,6 +38,11 @@ reduction : float
 verbose : bool
 	If True - prints the progress of minimize. (default is True)
 
+concise : bool
+    If True - returns concise convergence info, only the minimium function
+    value (necessary when optimizing a large number of parameters)
+    (default is False)
+
 Return
 ------
 Xs : numpy array - Shape : (D, 1)
@@ -46,6 +52,10 @@ convergence : numpy array - Shape : (i, D+1)
 	Convergence information. The first column is the function values
 	returned by the function being minimized. The next D columns are
 	the guesses of X during the minimization process.
+
+    If concise = True, convergence information is only the minimum
+    function value. This is necessary only when optimizing a large number
+    of parameters.
 
 i : int
 	Number of line searches or function evaluations depending on which was selected.
@@ -65,11 +75,12 @@ array([[1.],
 33
 ```
 The minimum of the function occurs at X = [1., 1.] with a function value of 0 and is determined after 33 iterations. The convergence returned by minimize has the function evaluations in the first column, and the parameters being minimised in the following D columns. The figure below shows the convergence values plotted over the rosenbrock function. If the length parameter is set to a negative value then the algorithm is limited by function evaluations rather than linesearches. 
-![](img/convergence.png)
+![](doc/img/convergence.png)
 
 ## check_grad usage
 
-The check_grad function can be used to check that the function values and partial derivatives are consistent. The check_grad function compares the values of the partial derivatives returned by the function with a finite difference approximation. check_grad prints a comparison of the partial derivatives and the finite difference approximation and returns the norm of the difference divided by the norm of the sum of the partial derivatives and finite differences. 
+The check_grad function can be found at `optimizer/test_grad.py` and can be used to check that the function values 
+and partial derivatives are consistent. The check_grad function compares the values of the partial derivatives returned by the function with a finite difference approximation. check_grad prints a comparison of the partial derivatives and the finite difference approximation and returns the norm of the difference divided by the norm of the sum of the partial derivatives and finite differences. 
 
 ```
 d = check_grad(f, X, e, args=())
