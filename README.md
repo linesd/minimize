@@ -8,7 +8,7 @@ Notes:
 ## minimize usage
 
 The minimize function can be found at `optimizer/minimize.py` and is called according to the following definition. 
-An example of its usage follows follows.
+An example of its usage follows.
 
 ```
 Xs, convergence, i = minimize(f, X, length, args=(), reduction=None, verbose=True)
