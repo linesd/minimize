@@ -5,6 +5,11 @@ This repository is a Python implementation of C.E. Rasmussen's [minimize](http:/
 Notes:
 - Tested for python >= 3.6
 
+**Table of Contents:**
+1. [minimize usage](#minimize-usage)
+2. [check_grad usage](#check_grad-usage)
+3. [Testing](#testing)
+
 ## minimize usage
 
 The minimize function can be found at `optimizer/minimize.py` and is called according to the following definition. 
@@ -75,7 +80,10 @@ array([[1.],
 33
 ```
 The minimum of the function occurs at X = [1., 1.] with a function value of 0 and is determined after 33 iterations. The convergence returned by minimize has the function evaluations in the first column, and the parameters being minimised in the following D columns. The figure below shows the convergence values plotted over the rosenbrock function. If the length parameter is set to a negative value then the algorithm is limited by function evaluations rather than linesearches. 
-![](doc/img/convergence.png)
+
+<p align="center">
+  <img src="doc/imgs/convergence.png" width=800>
+</p>
 
 ## check_grad usage
 
@@ -123,3 +131,13 @@ Gradients vs finite difference:
 >>> print("d : ", d)
 d :  1.9199773511233608e-11
 ```
+
+## Testing
+
+Testing setup with [pytest](https://docs.pytest.org) (requires installation). Should you want to check version 
+compatibility or make changes, you can check that original minimize functionality remains unaffected by executing 
+`pytest -v` in the **test** directory. You should see the following:
+
+<p align="center">
+  <img src="doc/imgs/pytest_results.png" width=800>
+</p>
