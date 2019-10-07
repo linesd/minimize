@@ -14,7 +14,7 @@ def check_grad(f, X, e, args=()):
         derivatives of shape (D,) with respect to X, where D is
         the dimensionality of the function.
 
-    X : numpy array - Shape : (D, 1)
+    X : numpy array of shape (D, 1)
         argument for function f that the partial derivatives
         relate to.
 
@@ -26,8 +26,13 @@ def check_grad(f, X, e, args=()):
 
     Return
     ------
-    d : the norm of the difference divided by the norm of
-        the sum.
+    vec : numpy array of shape (D, 2)
+        The first column is dy which is generated from the function
+        partial derivatives. The second column is dh which is generated
+        from the finite difference approximations.
+
+    d : float
+        The norm of the difference divided by the norm of the sum.
     """
 	
     y, dy = eval('f')(X, *list(args))
@@ -43,7 +48,5 @@ def check_grad(f, X, e, args=()):
         dh[i] = (y2 - y1) / (2 * e)
 
     vec = np.hstack((dy,dh))
-    print("Gradients vs finite difference:")
-    print(vec)
 
-    return  np.linalg.norm(dh-dy)/np.linalg.norm(dh+dy)
+    return  vec, np.linalg.norm(dh-dy)/np.linalg.norm(dh+dy)
