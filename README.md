@@ -112,6 +112,11 @@ args : tuple
 
 Return
 ------
+vec : numpy array of shape (D, 2)
+    The first column is dy which is generated from the function
+    partial derivatives. The second column is dh which is generated
+    from the finite difference approximations.
+
 d : the norm of the difference divided by the norm of
 	the sum.
 ```
@@ -121,12 +126,13 @@ It is used as follows:
 ```
 >>> np.random.seed(0)
 >>> X = np.random.normal(0, 1, size=(3,1))
->>> d = check_grad(rosenbrock, X, 1e-5)
+>>> vec, d = check_grad(rosenbrock, X, 1e-5)
+>>> print("Gradients vs finite difference:")
+>>> print(vec)
 
-Gradients vs finite difference:
-1914.97696491 1914.97696499
--674.57380768 -674.57380767
-163.72243854  163.72243854
+[[1914.97696491 1914.97696499]
+ [-674.57380768 -674.57380767]
+ [ 163.72243854  163.72243854]]
 
 >>> print("d : ", d)
 d :  1.9199773511233608e-11
