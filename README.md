@@ -44,9 +44,9 @@ verbose : bool
 	If True - prints the progress of minimize. (default is True)
 
 concise : bool
-    If True - returns concise convergence info, only the minimium function
-    value (necessary when optimizing a large number of parameters)
-    (default is False)
+    	If True - returns concise convergence info, only the minimium function
+    	value (necessary when optimizing a large number of parameters)
+    	(default is False)
 
 Return
 ------
@@ -57,10 +57,9 @@ convergence : numpy array - Shape : (i, D+1)
 	Convergence information. The first column is the function values
 	returned by the function being minimized. The next D columns are
 	the guesses of X during the minimization process.
-
-    If concise = True, convergence information is only the minimum
-    function value. This is necessary only when optimizing a large number
-    of parameters.
+    	If concise = True, convergence information is only the minimum
+    	function value. This is necessary only when optimizing a large number
+    	of parameters.
 
 i : int
 	Number of line searches or function evaluations depending on which was selected.
