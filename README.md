@@ -112,9 +112,9 @@ args : tuple
 Return
 ------
 vec : numpy array of shape (D, 2)
-    The first column is dy which is generated from the function
-    partial derivatives. The second column is dh which is generated
-    from the finite difference approximations.
+    	The first column is dy which is generated from the function
+    	partial derivatives. The second column is dh which is generated
+    	from the finite difference approximations.
 
 d : the norm of the difference divided by the norm of
 	the sum.
