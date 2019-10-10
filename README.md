@@ -17,7 +17,9 @@ An example of its usage follows.
 
 ```
 Xs, convergence, i = minimize(f, X, length, args=(), reduction=None, verbose=True)
+```
 
+```
 Parameters
 ----------
 f : function to minimize. The function must return the value
@@ -91,7 +93,9 @@ and partial derivatives are consistent. The check_grad function compares the val
 
 ```
 d = check_grad(f, X, e, args=())
+```
 
+```
 Parameters
 ----------
 f : function to minimize. The function must return the value
@@ -129,6 +133,7 @@ It is used as follows:
 >>> print("Gradients vs finite difference:")
 >>> print(vec)
 
+Gradients vs finite difference:
 [[1914.97696491 1914.97696499]
  [-674.57380768 -674.57380767]
  [ 163.72243854  163.72243854]]
